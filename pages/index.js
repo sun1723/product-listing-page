@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import clientPromise from "../lib/mongodb";
-import BootstrapCss from "../util/styles";
+import BootstrapCss from "../../util/styles";
 
 export default function Home({hotels}) {
   return (
