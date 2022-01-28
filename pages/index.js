@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import clientPromise from "../lib/mongodb";
-import BootstrapCss from "../../util/styles";
+import BootstrapCss from "../util/styles";
 
 export default function Home({hotels}) {
   return (
@@ -59,6 +59,7 @@ export async function getServerSideProps(context) {
   const client = await clientPromise;
 
   const db = client.db("hotels");
+  
   
   let hotels = await db.collection("hotels").find({}).toArray();
   hotels = JSON.parse(JSON.stringify(hotels));
