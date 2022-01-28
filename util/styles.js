@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const BootstrapCss = styled.div`
+export default const BootstrapCss = styled.div`
 html,
 body {
     height: 100%
