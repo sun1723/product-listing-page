@@ -59,8 +59,7 @@ export async function getServerSideProps(context) {
   const client = await clientPromise;
 
   const db = client.db("hotels");
-  
-  
+
   let hotels = await db.collection("hotels").find({}).toArray();
   hotels = JSON.parse(JSON.stringify(hotels));
 
