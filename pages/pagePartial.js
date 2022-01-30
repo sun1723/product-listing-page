@@ -17,7 +17,6 @@ export const SearchBox = ({value, onChangeEvent}) => {
 export const ProductList = ({products}) =>  {
   return (
     <BootstrapCss style={{width: '90%'}}>
-      {console.log(products.length/4)}
       <div class="con" style={{gridTemplateColumns: (products!=null && (Math.floor((products.length)/4) > 0)) ? 'repeat(auto-fill,minmax(250px, 1fr))': '', justifyContent: (products && Math.floor((products.length)/4 )== 0) ? 'center' : ''}}>
         {products.length >0 ? 
         products.map( item => (

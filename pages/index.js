@@ -40,12 +40,10 @@ export default function Home({restaurants}) {
   }
 
   const onChangeValue = (val)=> {
-    console.log(val)
     setMenuKey(val)
   }
 
   const searchHandler = () => {
-    console.log(searchKey," -------", menuKey)
     let newList = [];
     newList = restaurants.map(item => item).filter(item => item.name.includes(searchKey));
     if(menuKey ){
@@ -56,7 +54,6 @@ export default function Home({restaurants}) {
 
   return (
     <div className="container">
-      {console.log(products)}
       <Head>
         <title>properties</title>
         <link rel="icon" href="/favicon.ico" />
