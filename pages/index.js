@@ -2,49 +2,75 @@ import Head from 'next/head'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import clientPromise from "../lib/mongodb";
-import {BootstrapCss} from "../util/styles";
-import TextField from '@material-ui/core/TextField';
+import React, {useState, useEffect} from 'react';
+import {SearchBox, ProductList, PopoverFilter} from './pagePartial';
 
-export default function Home({hotels}) {
+export default function Home({restaurants}) {  
+  const [searchKey, setSearchKey] = useState('');
+  const [products, setProducts] = useState(restaurants);
+  const [menuList, setMenuList] = useState([]);
+  const [menuKey, setMenuKey] = useState('');
+
+  useEffect (() => {
+    //get all type
+    getAllType();
+  },[])
+
+  useEffect(() => {
+    searchHandler();
+  },[searchKey,menuKey])
+
+  //getAllType: get all types from list
+  const getAllType = () => {
+    let newList = [];
+    products.map(pro => {
+      if(!newList.includes(pro.type_of_food))
+        newList.push(pro.type_of_food);
+    });
+    setMenuList(newList);
+  }
+
+  //onChange Event for the search Input field
+  const onChangeSearch = (val) => {
+    setSearchKey(val);
+  }
+
+  const refreshProducts =  () => {
+    setProducts(products);
+  }
+
+  const onChangeValue = (val)=> {
+    console.log(val)
+    setMenuKey(val)
+  }
+
+  const searchHandler = () => {
+    console.log(searchKey," -------", menuKey)
+    let newList = [];
+    newList = restaurants.map(item => item).filter(item => item.name.includes(searchKey));
+    if(menuKey ){
+      newList = newList.filter(item => item.type_of_food == menuKey)
+    }
+    setProducts(newList);
+  }
+
   return (
     <div className="container">
+      {console.log(products)}
       <Head>
         <title>properties</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header title="properties" />
       <main style={{width: '100%'}}>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <BootstrapCss style={{width: '100%'}}>
-          <div class="con">
-        { hotels.map( hotel => (
-        <div class=" mydiv">
-                  <div class="bbb_deals">
-                      <div class="bbb_deals_slider_container">
-                          <div class=" bbb_deals_item">
-                              <div class="bbb_deals_image"><img src={hotel.img ? hotel.img : '/noImgAvailable.png'} alt=""/></div>
-                              <div class="bbb_deals_content">
-                                  <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                      <div class="bbb_deals_item_category"><a href="#">Hotel</a></div>
-                                  </div>
-                                  <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
-                                      <div class="bbb_deals_item_name">{hotel.name ? hotel.name : ''}</div>
-                                      <div class="bbb_deals_item_price ml-auto">{hotel.price ? hotel.price : 'price under negotiate'}</div>
-                                  </div>
-                                  <div class="available">
-                                      <div class="available_line d-flex flex-row justify-content-start">
-                                          <div class="available_title">Contact Number: <span>{hotel.phone ? hotel.phone : "No phone number present"}</span></div>
-                                          <div class="sold_stars ml-auto"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                                      </div>
-                                      <div class="available_bar"><span style={{width:'17%'}}></span></div>
-                                  </div>
-                              </div> 
-                          </div>
-                      </div>
-                </div>
-          </div>))}
-          </div>
-        </BootstrapCss>
+        <SearchBox 
+        value={searchKey}
+        onChangeEvent={onChangeSearch}
+        />
+        <PopoverFilter menuList={menuList} onChangeValue={onChangeValue} />
+        <ProductList
+          products= {products}
+        />
       </main>
 
       <Footer />
@@ -59,8 +85,15 @@ export async function getServerSideProps(context) {
 
   let hotels = await db.collection("hotels").find({}).toArray();
   hotels = JSON.parse(JSON.stringify(hotels));
+  let restaurants = await db.collection("restaurants").find({}).toArray();
+  restaurants = JSON.parse(JSON.stringify(restaurants));
+
+  let items = {
+    hotels: hotels,
+    restaurants: restaurants
+  }
 
   return {
-    props: { hotels },
+    props: { restaurants },
   };
 }
