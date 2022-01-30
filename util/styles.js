@@ -4,7 +4,7 @@ export const BootstrapCss = styled.div`
 .con{
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+  // grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
   grid-auto-flow: row;
 }
 .mydiv {
@@ -137,8 +137,8 @@ div {
 
 .bbb_deals_image img {
     width: 100%;
-    object-fit: cover;
-    height: 250px;
+    object-fit: contain;
+    height: 160px;
 }
 
 .bbb_deals_content {
