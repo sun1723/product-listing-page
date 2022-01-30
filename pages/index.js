@@ -55,10 +55,10 @@ export default function Home({restaurants}) {
   return (
     <div className="container">
       <Head>
-        <title>properties</title>
+        <title>A Simple Product Listing Page</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title="properties" />
+      <Header title="A Simple Product Listing Page" />
       <main style={{width: '100%',padding: '0 0',}}>
         <div style={{display: "flex", width: '80%', justifyContent: 'center', alignItems: 'center'}}>
           <SearchBox 
