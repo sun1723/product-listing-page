@@ -1,39 +1,74 @@
-# Next + Netlify Starter
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/46648482-644c-4c80-bafb-872057e51b6b/deploy-status)](https://app.netlify.com/sites/next-dev-starter/deploys)
+# A Simple Product Listing Page
 
-This is a [Next.js](https://nextjs.org/) v12 project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and set up to be instantly deployed to [Netlify](https://url.netlify.com/SyTBPVamO)!
+A simple product listing page with Next.js
 
-This project is a very minimal starter that includes 2 sample components, a global stylesheet, a `netlify.toml` for deployment, and a `jsconfig.json` for setting up absolute imports and aliases. It also includes the [Essential Next.js Build Plugin](https://github.com/netlify/netlify-plugin-nextjs), which will allow for you to implement features like Preview Mode, server-side rendering/incremental static regeneration via Netlify Functions, and internationalized routing.
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
 
-(If you click this button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify)
 
-## Getting Started
+## Run Locally
 
-First, run the development server:
+Clone the project
 
 ```bash
-npm run dev
-# or
-yarn dev
+  git clone https://github.com/sun1723/product-listing-page.git
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+  npm install --save
+```
 
-### Installation options
+Start the server
 
-**Option one:** One-click deploy
+```bash
+  npm run dev
+```
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/next-netlify-starter&utm_source=github&utm_medium=nextstarter-cs&utm_campaign=devex-cs)
+open Local host
 
-**Option two:** Manual clone
+https://localhost:3000
 
-1. Clone this repo: `git clone https://github.com/netlify-templates/next-netlify-starter.git`
-2. Navigate to the directory and run `npm install`
-3. Run `npm run dev`
-4. Make your changes
-5. Connect to [Netlify](https://url.netlify.com/Bk4UicocL) manually (the `netlify.toml` file is the one you'll need to make sure stays intact to make sure the export is done and pointed to the right stuff)
+### Product Listing Page File Structure
+``` 
+ ┣ components
+ ┃ ┣ Footer.js
+ ┃ ┣ Footer.module.css
+ ┃ ┗ Header.js
+ ┣ lib
+ ┃ ┗ mongodb.js
+ ┣ pages
+ ┃ ┣ api
+ ┃ ┃ ┗properties.js
+ ┃ ┣ _app.js
+ ┃ ┣ _document.js
+ ┃ ┣ index.js
+ ┃ ┗ pagePartial.js
+ ┣ public
+ ┃ ┣ favicon.ico
+ ┃ ┣ food.jpg
+ ┃ ┣ netliheart.svg
+ ┃ ┗ noImgAvailable.png
+ ┣ styles
+ ┃ ┗ globals.css
+ ┣ util
+ ┃ ┗ styles.js
+```
+## Lessons Learned
+
+1. deployment in netlify -- security problem --mongodb uri exposed
+
+
+
+## Features
+
+- sample data: download json file from "https://github.com/ozlerhakan/mongodb-json-files/blob/master/datasets/restaurant.json"
+- UI components -- material ui, styled component
+## Improvement
+- More data type can be implemented 
+- restructure components and increase their reusability
+- Deplyment security issue
+- Restructure filter for data --> better user experience
+- Improve api structure
