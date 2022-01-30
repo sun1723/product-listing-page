@@ -1,7 +1,7 @@
 
 # A Simple Product Listing Page
 
-A simple product listing page with Next.js
+A simple product listing page with Next.js and React
 
 
 
