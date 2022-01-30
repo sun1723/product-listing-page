@@ -8,9 +8,9 @@ import Button from '@material-ui/core/Button';
 
 export const SearchBox = ({value, onChangeEvent}) => {
   return(
-    <>
+    <div style={{marginRight: '40px'}}>
       <TextField id="outlined-basic" label="search key" value={value} onChange = {(evt) => {onChangeEvent(evt.target.value)}} variant="outlined" />
-    </>
+    </div>
   )
 }
 
@@ -25,7 +25,7 @@ export const ProductList = ({products}) =>  {
                   <div class="bbb_deals">
                       <div class="bbb_deals_slider_container">
                           <div class=" bbb_deals_item">
-                              <div class="bbb_deals_image"><img src={item.img ? item.img : '/noImgAvailable.png'} alt=""/></div>
+                              <div class="bbb_deals_image"><img src={item.img ? item.img : '/food.jpg'} alt=""/></div>
                               <div class="bbb_deals_content">
                                   <div class="bbb_deals_info_line d-flex flex-row justify-content-start">
                                       <div class="bbb_deals_item_category"><a href="#">{item.type_of_food ? item.type_of_food : 'Unknown'}</a></div>
@@ -68,8 +68,9 @@ export const PopoverFilter = ({menuList, onChangeValue}) => {
       aria-haspopup="true"
       variant="contained"
       color="primary"
-      onClick={(evt) => setAnchorEl(evt.currentTarget)} >
-        <AddCircleIcon style={{height: '50px'}} />
+      onClick={(evt) => setAnchorEl(evt.currentTarget)} 
+      style={{maxHeight: '40px'}}>
+        <AddCircleIcon  />
     </Button>
     <Menu
       id="simple-menu"

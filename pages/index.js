@@ -62,12 +62,14 @@ export default function Home({restaurants}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header title="properties" />
-      <main style={{width: '100%'}}>
-        <SearchBox 
-        value={searchKey}
-        onChangeEvent={onChangeSearch}
-        />
-        <PopoverFilter menuList={menuList} onChangeValue={onChangeValue} />
+      <main style={{width: '100%',padding: '0 0',}}>
+        <div style={{display: "flex", width: '80%', justifyContent: 'center', alignItems: 'center'}}>
+          <SearchBox 
+          value={searchKey}
+          onChangeEvent={onChangeSearch}
+          />
+          <PopoverFilter menuList={menuList} onChangeValue={onChangeValue} />
+        </div>
         <ProductList
           products= {products}
         />

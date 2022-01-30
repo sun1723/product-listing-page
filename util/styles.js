@@ -103,7 +103,7 @@ div {
 .bbb_deals {
     width: 100%;
     margin-right: 7%;
-    padding-top: 80px;
+    // padding-top: 80px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 34px;
@@ -137,7 +137,7 @@ div {
 
 .bbb_deals_image img {
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     height: 160px;
 }
 
