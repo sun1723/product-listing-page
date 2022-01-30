@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 
 export const BootstrapCss = styled.div`
-html,
-body {
-    height: 100%
+.con{
+  display: grid;
+  grid-gap: 20px;
+  // grid-template-columns: repeat(auto-fill,minmax(250px, 1fr));
+  grid-auto-flow: row;
 }
-
-body {
-    display: grid;
-    background: #fff;
-    font-family: 'Manrope', sans-serif
-}
-
 .mydiv {
     margin-top: 50px;
     margin-bottom: 50px
@@ -108,13 +103,14 @@ div {
 .bbb_deals {
     width: 100%;
     margin-right: 7%;
-    padding-top: 80px;
+    // padding-top: 80px;
     padding-left: 25px;
     padding-right: 25px;
     padding-bottom: 34px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    margin-top: 0px
+    margin-top: 0px;
+    height: 100%
 }
 
 .bbb_deals_title {
@@ -135,11 +131,14 @@ div {
 }
 
 .bbb_deals_image {
-    width: 100%
+    width: 100%;
+    
 }
 
 .bbb_deals_image img {
-    width: 100%
+    width: 100%;
+    object-fit: cover;
+    height: 160px;
 }
 
 .bbb_deals_content {
@@ -165,7 +164,9 @@ div {
 .bbb_deals_item_name {
     font-size: 24px;
     font-weight: 400;
-    color: #000000
+    color: #000000;
+    box-sizing: border-box;
+    height: 60px
 }
 
 .bbb_deals_item_price {
